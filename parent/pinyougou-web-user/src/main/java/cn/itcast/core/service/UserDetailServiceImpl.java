@@ -17,8 +17,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
         User user = new User(username,"",grantedAuthorities);
         //授权的时候代表登录已成功 此时给用户表添加一个最后登录时间
-
-
         return user;
     }
 }
