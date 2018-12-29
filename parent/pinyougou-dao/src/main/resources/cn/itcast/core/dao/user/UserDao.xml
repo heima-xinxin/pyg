@@ -24,6 +24,7 @@
     <result column="experience_value" property="experienceValue" jdbcType="INTEGER" />
     <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
     <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="counts" property="counts" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -109,7 +110,7 @@
   </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
-    id,username,password,phone,email,created,updated,source_type,nick_name,name,status,head_pic,qq,account_balance,is_mobile_check,is_email_check,sex,user_level,points,experience_value,birthday,last_login_time
+    id,username,password,phone,email,created,updated,source_type,nick_name,name,status,head_pic,qq,account_balance,is_mobile_check,is_email_check,sex,user_level,points,experience_value,birthday,last_login_time,counts
     from tb_user
     where id = #{id,jdbcType=BIGINT}
   </select>
@@ -355,6 +356,9 @@
       <if test="record.lastLoginTime != null" >
         last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.counts != null" >
+        counts = #{record.counts,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -454,6 +458,9 @@
       <if test="lastLoginTime != null" >
         last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="counts != null" >
+        counts = #{counts,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -482,4 +489,16 @@
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectUserByUserName" parameterType="String" resultType="cn.itcast.core.pojo.user.User">
+     select * from tb_user where username=#{username}
+  </select>
+
+  <select id="selectActiveUser" resultMap="BaseResultMap">
+    SELECT * FROM tb_user WHERE counts >3 AND STATUS ='0';
+  </select>
+  <select id="selectUnActiveUser" resultMap="BaseResultMap">
+    SELECT * FROM tb_user WHERE counts BETWEEN 0 AND 3 AND STATUS ='0'
+  </select>
+
 </mapper>

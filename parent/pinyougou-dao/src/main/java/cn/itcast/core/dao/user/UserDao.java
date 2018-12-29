@@ -27,4 +27,10 @@ public interface UserDao {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User selectUserByUserName(String username);
+
+    List<User> selectActiveUser();
+
+    List<User> selectUnActiveUser();
 }

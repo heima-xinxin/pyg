@@ -108,6 +108,21 @@ public class User implements Serializable {
      */
     private Date lastLoginTime;
 
+    //登录次数
+    private Integer counts;
+
+    public Integer getCounts() {
+        return counts;
+    }
+
+    public void setCounts(Integer counts) {
+        this.counts = counts;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
