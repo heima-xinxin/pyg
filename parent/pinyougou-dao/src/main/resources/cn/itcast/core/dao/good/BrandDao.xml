@@ -124,6 +124,9 @@
       <if test="birthday != null" >
         birthday,
       </if>
+      <if test="status != null" >
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -137,6 +140,9 @@
       </if>
       <if test="birthday != null" >
         #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>

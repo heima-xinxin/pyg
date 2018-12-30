@@ -23,4 +23,6 @@ public interface BrandService {
     PageResult search(Integer pageNum, Integer pageSize, Brand brand) throws Exception;
 
     List<Map> selectOptionList() throws Exception;
+
+    void save(Brand brand);
 }

@@ -17,7 +17,6 @@ public class OrderItemController {
     @RequestMapping("/search")
     public PageResult search(Integer page, Integer rows) throws Exception {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println(1);
         return orderItemService.search(page,rows,name);
     }
 

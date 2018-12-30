@@ -18,6 +18,11 @@ public class Brand implements Serializable {
 
     private Date birthday;
 
+    /**
+     *品牌状态
+     */
+    private String status;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -50,6 +55,14 @@ public class Brand implements Serializable {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override

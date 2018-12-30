@@ -91,4 +91,12 @@ public class BrandServiceImpl implements BrandService {
     public List<Map> selectOptionList() throws Exception {
         return brandDao.selectOptionList();
     }
+
+    @Override
+    public void save(Brand brand) {
+        brand.setStatus("0");
+            brand.setFirstChar(brand.getStatus().toUpperCase());
+
+        brandDao.insertSelective(brand);
+    }
 }
