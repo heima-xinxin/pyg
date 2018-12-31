@@ -17,4 +17,6 @@ public interface ItemCatService {
     void delete(Long[] ids) throws Exception;
 
     List<ItemCat> findAll();
+
+    List<ItemCat> findItemCatList() throws Exception;
 }
